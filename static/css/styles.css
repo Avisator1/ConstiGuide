@@ -1,0 +1,88 @@
+    .maxWidth1 {
+        max-width: 100%;
+    }
+
+    #banner {
+        position: relative;
+        height: 400px; 
+        color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden; 
+    }
+
+    .banner-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(5px); 
+        z-index: -1; 
+    }
+
+    .banner-content {
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    #about-us {
+        background-color: #343a40;
+        padding: 40px 20px;
+    }
+
+    #about-us h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #4CAF50;
+    }
+
+    #about-us p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        color: white;
+    }
+
+    #info1 {
+        background-color: #343a40;
+        padding: 40px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .info-text {
+        flex: 1;
+        color: white;
+        padding-right: 20px;
+    }
+
+    .info-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #info1 h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #4CAF50;
+    }
+
+    #info1 p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+        color: white;
+    }
+    #articleInfo {
+        background-color: #1e242a !important;
+        padding: 40px 20px;
+    }
+    
+    #articleInfo h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #4CAF50;
+    }

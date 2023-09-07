@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<style>
+    body {
+        background-color: #343a40;
+    }
+</style>
+
+<section id="banner">
+    <div class="container-fluid p-0">
+        <div class="banner-content">
+            <h1>Constitution Information</h1>
+            <p>Made by Avyukt Ballari</p>
+        </div>
+        <img src="/static/img/infoHeader.jpg" alt="Background Image" class="banner-image">
+    </div>
+</section>
+
+<section id="info1">
+    <div class="container">
+        <div class="info-content">
+            <div class="info-text">
+                <h2>Constitution Info</h2>
+                <p>The U.S. Constitution is an illuminating piece of work.</p>
+                <p> It stands as the cornerstone of liberty, justice, and equality in the United States.</p>
+                <p>Currently, the Constitution we know today is housed in the National Archives Museum. </p>
+                <p>Our Constitution is divided into seven articles and a preamble.</p>
+                <p>You may not have heard much about the preamble, but it serves as the introductory statement of the Constitution. </p>
+                <p>The preamble contains the iconic words, 'We the people.' This text, the preamble, essentially outlines the goals and purposes of the Constitution.</p>
+                <p>Please click on the cards below to learn the purpose of each article and what it serves.</p>
+            </div>
+            <div class="info-image">
+                <img src="/static/img/small.jpg" alt="Info Image">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="articleInfo">
+    <div class="container">
+        <h2>Article Info</h2>
+        <style>
+            /* Custom CSS for reducing margin between columns */
+            .custom-card-col {
+                padding: 10px; /* Adjust the padding as needed */
+                margin-bottom: 10px; /* Add margin at the bottom to reduce the gap */
+            }
+
+            /* Override Bootstrap's default margin for .col-md-6 */
+            .col-md-6 {
+                margin-bottom: 0; /* Remove the default margin */
+            }
+        </style>
+        <div class="row">
+            <div class="col-md-6 custom-card-col">
+                <div class="card" style="max-width: 300px;">
+                    <div class="card-img-top custom-card-img" style="background-image: url('/static/img/article1.jpg');"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Article I</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 custom-card-col">
+                <div class="card" style="max-width: 300px;">
+                    <div class="card-img-top custom-card-img" style="background-image: url('/static/img/article1.jpg');"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Article I</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Add more Bootstrap cards as needed -->
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Custom CSS for resizing the card image */
+    .custom-card-img {
+        height: 150px; /* Set the desired height for the card image */
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+
+{% endblock %}
