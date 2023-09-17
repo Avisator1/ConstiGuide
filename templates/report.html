@@ -1,5 +1,100 @@
 {% extends 'base.html' %}
 
 {% block main %}
+<style>
+    body {
+        background-color: #171818;
+        color: white;
+    }
+</style>
+
+<div class="container mt-5 pt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="mb-4">Amendments Poll Results</h1>
+
+            <!-- Poll Description -->
+            <p class="mb-4">
+                I took a poll in a certain group of people, specifically those who play Minecraft, using my YouTube channel. According to 19(ages 18-24) people, the results are shown here Note these datas are changing as people vote today.
+            </p>
+
+            <!-- Poll Results -->
+            <div class="card" data-bs-theme="dark">
+                <div class="card-body">
+                    <h3 class="card-title">Poll Results</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Fully Know
+                            <span class="badge badge-primary badge-pill">{{ fully_know_percentage }}%</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            To Some Extent
+                            <span class="badge badge-success badge-pill">{{ to_some_extent_percentage }}%</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Don't Know
+                            <span class="badge badge-danger badge-pill">{{ dont_know_percentage }}%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- "Vote Today" button -->
+            <a class="btn btn-primary mt-4" href="/vote" role="button">Vote Today</a>
+        </div>
+
+        <!-- Space for Including an Image -->
+        <div class="col-md-6 mt-5">
+            <h2 class="mb-4">Poll Chart</h2>
+            <!-- Placeholder for Pie Chart (You will need to replace this with actual chart code) -->
+            <div class="chart-container">
+                <canvas id="pieChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conclusion Text -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <p>What we can conclude from this poll is that the 7 amendments are not really commonly<br> known in depth, which should be changed.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Function to initialize and populate the pie chart
+        function createPieChart() {
+            var ctx = document.getElementById('pieChart').getContext('2d');
+
+            // Sample data (you should replace this with your actual data)
+            var fullyKnowCount = "{{ fully_know_count }}";
+            var toSomeExtentCount = "{{ to_some_extent_count }}";
+            var dontKnowCount = "{{ dont_know_count }}";
+
+            var data = {
+                labels: ['Fully Know', 'To Some Extent', "Don't Know"],
+                datasets: [{
+                    data: [fullyKnowCount, toSomeExtentCount, dontKnowCount],
+                    backgroundColor: ['#007bff', '#28a745', '#dc3545'],
+                }],
+            };
+
+            var options = {
+                responsive: true,
+                maintainAspectRatio: false,
+            };
+
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: options,
+            });
+        }
+
+        // Call the function to create the pie chart when the page loads
+        createPieChart();
+    });
+</script>
 
 {% endblock %}

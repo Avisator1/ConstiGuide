@@ -1,5 +1,161 @@
 {% extends 'base.html' %}
 
 {% block main %}
+<style>
+    /* Custom CSS for quiz container */
+    .quiz-container {
+        background-color: #343a40; /* Dark background color */
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
+    /* Custom CSS for text color */
+    .text-light {
+        color: #fff; /* Light text color */
+    }
+
+    /* Custom CSS for question and choices */
+    .question {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .choice-btn {
+        font-size: 18px;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .choice-btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Custom CSS for results */
+    .results {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+    /* Center the quiz container in the middle of the page */
+    .full-height {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    body {
+        background-color: #171818;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row full-height">
+        <div class="col-md-8 quiz-container text-light"> <!-- Apply light text color to the container -->
+            <h1 class="question">Constitution Quiz</h1>
+            <div id="quiz">
+                <div id="question" class="question">
+                    <!-- Question will be displayed here -->
+                </div>
+                <div id="choices">
+                    <!-- Answer choices will be displayed here -->
+                </div>
+
+            </div>
+            <div id="results" class="results">
+                <!-- Quiz results will be displayed here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS and your custom JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Define your quiz questions and answers
+    const questions = [
+        {
+            question: "What is the supreme law of the United States?",
+            choices: ["The Constitution", "The Bill of Rights", "The Declaration of Independence", "The Emancipation Proclamation"],
+            correctAnswer: "The Constitution"
+        },
+        {
+            question: "How many amendments are there in the U.S. Constitution?",
+            choices: ["10", "25", "27", "50"],
+            correctAnswer: "27"
+        },
+        {
+            question: "Which branch of the U.S. government makes laws?",
+            choices: ["Executive", "Legislative", "Judicial", "Military"],
+            correctAnswer: "Legislative"
+        },
+        {
+            question: "Who is known as the 'Father of the Constitution'?",
+            choices: ["George Washington", "Thomas Jefferson", "Benjamin Franklin", "James Madison"],
+            correctAnswer: "James Madison"
+        }
+    ];
+
+    let currentQuestion = 0; // Index of the current question
+    let score = 0; // Initialize the score
+
+    // Function to load the next question
+    function loadNextQuestion() {
+        if (currentQuestion < questions.length) {
+            const questionElement = document.getElementById("question");
+            const choicesElement = document.getElementById("choices");
+
+            // Display the current question
+            questionElement.textContent = questions[currentQuestion].question;
+
+            // Display answer choices
+            choicesElement.innerHTML = "";
+            questions[currentQuestion].choices.forEach((choice) => {
+                const button = document.createElement("button");
+                button.textContent = choice;
+                button.classList.add("btn", "btn-secondary", "mb-2", "choice-btn");
+                button.addEventListener("click", checkAnswer);
+                choicesElement.appendChild(button);
+            });
+        } else {
+            // Display the final score
+            showResults();
+        }
+    }
+
+    // Function to check the selected answer
+    function checkAnswer(event) {
+        const selectedAnswer = event.target.textContent;
+        const correctAnswer = questions[currentQuestion].correctAnswer;
+
+        if (selectedAnswer === correctAnswer) {
+            score++;
+        }
+
+        currentQuestion++; // Move to the next question
+        loadNextQuestion();
+    }
+
+    // Function to display the final score
+    function showResults() {
+        const quizElement = document.getElementById("quiz");
+        quizElement.style.display = "none"; // Hide the quiz
+
+        const resultsElement = document.getElementById("results");
+        resultsElement.innerHTML = `<h2 class="results">Your Score: ${score}/${questions.length}</h2>`;
+        resultsElement.style.display = "block"; // Show the results
+    }
+
+    // Start the quiz by loading the first question
+    loadNextQuestion();
+</script>
 {% endblock %}

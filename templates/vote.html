@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<style>
+     body {
+        background-color: #343a40;
+    }
+</style>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="bg-dark text-white p-4">
+        <h2 class="text-center">Vote on Constitution Knowledge</h2>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="knowledge" class="form-label">Do you know about the constitution? Btw ur vote will be shown on the chart</label>
+                <select class="form-select" id="knowledge" name="knowledge" required>
+                    <option value="" disabled selected>Select one</option>
+                    <option value="know">I know it well</option>
+                    <option value="extent">I know it to some extent</option>
+                    <option value="dont-know">I don't know</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
