@@ -182,10 +182,3 @@ def vote():
 
         return render_template('vote.html', nav3=True, username=username)
     return redirect(url_for("register"))
-
-
-
-
-
-if __name__ == "__main__":
-    app.run()
