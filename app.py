@@ -5,7 +5,7 @@ from bson import ObjectId
 
 app = Flask(__name__)
 app.secret_key = "05da2544-54c7-11ee-8c99-0242ac120002"
-client = MongoClient("mongodb+srv://avisator:ES1BkGcjKXCZ5qTd@constiguide.bg2up9x.mongodb.net/")
+client = MongoClient("")
 db = client["Users"]
 collection = db["users"]
 count = db["count"] 
